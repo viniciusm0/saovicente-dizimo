@@ -1,0 +1,160 @@
+
+> frontend@0.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v8.0.3[39m  [2mready in [0m[1m249[22m[2m[0m ms[22m
+
+  [32mÔ×£[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32mÔ×£[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  Ô×£[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+19:46:09 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:09 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:17 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:17 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:17 [vite] (client) [console.error] Erro de login: AxiosError: Request failed with status code 404
+    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:1634:14)
+    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:1951:4)
+    at Axios$1.request (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:2520:37)
+    at async login (http://localhost:5173/src/contexts/AuthContext.jsx:28:21)
+    at async handleSubmit (http://localhost:5173/src/pages/Login/index.jsx:44:16)
+19:46:21 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:21 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:25 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:25 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:30 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:30 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:46 [vite] (client) [console.error] Erro de login: AxiosError: Request failed with status code 404
+    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:1634:14)
+    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:1951:4)
+    at Axios$1.request (http://localhost:5173/node_modules/.vite/deps/axios.js?v=68fb18be:2520:37)
+    at async login (http://localhost:5173/src/contexts/AuthContext.jsx:28:21)
+    at async handleSubmit (http://localhost:5173/src/pages/Login/index.jsx:44:16)
+19:46:47 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:46:47 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:47:00 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:47:00 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:47:06 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+19:47:06 [vite] (client) [console.warn] Unable to access iframe: SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:5173" from accessing a cross-origin frame.
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1551:15)
+    at buildDomTree (eval at evaluate (:234:30), <anonymous>:1390:28)
+    at eval (eval at evaluate (:234:30), <anonymous>:1591:18)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[2m19:47:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/contexts/AuthContext.jsx[22m
+[2m19:47:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/contexts/AuthContext.jsx[22m Could not Fast Refresh ("useAuth" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m19:47:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/routes/index.jsx, /src/pages/Login/index.jsx, /src/components/Layout/index.jsx[22m
+[2m19:54:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m19:56:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx[22m
+[2m19:57:34[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m19:57:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+[2m19:57:34[22m [36m[1m[vite][22m[39m server restarted.
+[2m19:58:00[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m19:58:00[22m [36m[1m[vite][22m[39m server restarted.
