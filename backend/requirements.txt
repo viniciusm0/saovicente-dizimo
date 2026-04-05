@@ -1,0 +1,11 @@
+Flask
+Flask-Cors
+pydantic
+supabase
+argon2-cffi
+Flask-JWT-Extended
+python-dotenv
+python-dateutil
+requests
+urllib3
+reportlab

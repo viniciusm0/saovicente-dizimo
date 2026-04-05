@@ -1,0 +1,18 @@
+# Variáveis de ambiente
+.env
+backend/.env
+
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+
+# Dependências Node.js (Frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.npm/
+
+# S.O.
+.DS_Store
+Thumbs.db
