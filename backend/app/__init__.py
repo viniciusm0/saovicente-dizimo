@@ -10,13 +10,18 @@ load_dotenv()
 def create_app():
     app = Flask(__name__)
 
-    # Configurar CORS (permitir chamadas do frontend Vite na porta 5173 e 5174)
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    # Configurar CORS com Origin específica
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+    CORS(app, resources={r"/api/*": {"origins": frontend_url.split(",")}})
 
-    # Configurações do App
-    app.config["JWT_SECRET_KEY"] = os.getenv(
-        "JWT_SECRET", "super-secret-key-mudar-depois"
-    )
+    # Configurações do App (Proteção contra token default)
+    jwt_secret = os.getenv("JWT_SECRET")
+    env_mode = os.getenv("FLASK_ENV", "development")
+    
+    if not jwt_secret and env_mode != "development":
+        raise ValueError("ERRO CRÍTICO DE SEGURANÇA: JWT_SECRET não configurado no ambiente de produção!")
+
+    app.config["JWT_SECRET_KEY"] = jwt_secret or "super-secret-key-mudar-depois"
 
     # Inicializar extensões
     from flask_jwt_extended import JWTManager
