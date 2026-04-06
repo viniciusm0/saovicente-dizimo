@@ -45,16 +45,22 @@ def buscar_dizimistas():
         status = request.args.get('status', 'ativo')
         is_ativo = True if status == 'ativo' else False
         
-        base_query = supabase.table('dizimistas').select('*').eq('ativo', is_ativo)
+        page = int(request.args.get('page', 1))
+        limit = int(request.args.get('limit', 15))
+        offset = (page - 1) * limit
+        
+        base_query = supabase.table('dizimistas').select('*', count='exact').eq('ativo', is_ativo)
         
         if query.isdigit():
-            resposta = base_query.eq('numero_carteira', int(query)).execute()
+            base_query = base_query.eq('numero_carteira', int(query))
         elif query:
-            resposta = base_query.ilike('nome', f'%{query}%').execute()
-        else:
-            resposta = base_query.order('criado_em', desc=True).limit(50).execute()
+            base_query = base_query.ilike('nome', f'%{query}%')
             
-        return jsonify(resposta.data), 200
+        base_query = base_query.order('criado_em', desc=True)
+        resposta = base_query.range(offset, offset + limit - 1).execute()
+            
+        count = resposta.count if resposta.count is not None else 0
+        return jsonify({"data": resposta.data, "total": count}), 200
         
     except Exception as e:
         return jsonify({"erro": "Erro interno no servidor", "detalhe": str(e)}), 500
@@ -121,7 +127,13 @@ def restaurar_dizimista(id):
 @jwt_required()
 def historico_doacoes(id):
     try:
-        resposta = supabase.table('doacoes').select('*').eq('dizimista_id', id).order('data_hora', desc=True).execute()
-        return jsonify(resposta.data), 200
+        page = int(request.args.get('page', 1))
+        limit = int(request.args.get('limit', 15))
+        offset = (page - 1) * limit
+        
+        resposta = supabase.table('doacoes').select('*', count='exact').eq('dizimista_id', id).order('data_hora', desc=True).range(offset, offset + limit - 1).execute()
+        
+        count = resposta.count if resposta.count is not None else 0
+        return jsonify({"data": resposta.data, "total": count}), 200
     except Exception as e:
         return jsonify({"erro": "Erro interno no servidor", "detalhe": str(e)}), 500

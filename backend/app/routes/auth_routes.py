@@ -34,8 +34,6 @@ def login():
             ).json()
 
             # success e score >= 0.5 define que é humano confiável
-            print(rc_resp.get("success"))
-            print(rc_resp.get("score"))
             if not rc_resp.get("success") or rc_resp.get("score", 0) < 0.5:
                 return (
                     jsonify(

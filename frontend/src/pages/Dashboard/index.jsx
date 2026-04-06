@@ -19,11 +19,7 @@ const Dashboard = () => {
         setLoading(true);
         // Exemplo: assumindo que criamos uma rota /estatisticas no backend
         // Se ela não existir ainda, esta chamada vai falhar suavemente na UI.
-        const res = await api.get('/estatisticas').catch(() => ({ data: {
-           totalArrecadado: 1250.00,
-           totalDizimistas: 45,
-           contribuintesNoMes: 12
-        }}));
+        const res = await api.get('/estatisticas/');
 
         setMetricas(res.data);
       } catch (error) {
@@ -37,7 +33,7 @@ const Dashboard = () => {
   }, []);
 
   if (loading) {
-    return <div className="flex-center" style={{height: '100%'}}>Carregando métricas...</div>;
+    return <div className="flex-center" style={{ height: '100%' }}>Carregando métricas...</div>;
   }
 
   const formatCurrency = (value) => {

@@ -15,6 +15,12 @@ const Dizimistas = () => {
   // Filtro
   const [exibirDesativados, setExibirDesativados] = useState(false);
 
+  // Paginação
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const [totalPaginas, setTotalPaginas] = useState(1);
+  const [paginaAtualHistorico, setPaginaAtualHistorico] = useState(1);
+  const [totalPaginasHistorico, setTotalPaginasHistorico] = useState(1);
+
   // Estados dos Modais Principais
   const [modalNovoAberto, setModalNovoAberto] = useState(false);
   const [modalDoacaoAberto, setModalDoacaoAberto] = useState(false);
@@ -40,7 +46,8 @@ const Dizimistas = () => {
   const [formRelatorio, setFormRelatorio] = useState({ mes: '', ano: '' });
 
   useEffect(() => {
-    buscarDizimistas();
+    setPaginaAtual(1);
+    buscarDizimistas(1);
   }, [exibirDesativados]);
 
   const showMensagem = (tipo, texto) => {
@@ -50,16 +57,21 @@ const Dizimistas = () => {
 
   const getStatusQuery = () => exibirDesativados ? 'status=inativo' : 'status=ativo';
 
-  const buscarDizimistas = async () => {
+  const buscarDizimistas = async (page = paginaAtual) => {
     try {
       setLoading(true);
-      const res = await api.get(`/dizimistas/buscar?${getStatusQuery()}`);
-      setDizimistas(res.data || []);
+      const url = busca 
+        ? `/dizimistas/buscar?q=${busca}&${getStatusQuery()}&page=${page}`
+        : `/dizimistas/buscar?${getStatusQuery()}&page=${page}`;
+      const res = await api.get(url);
+      setDizimistas(res.data.data || []);
+      setTotalPaginas(Math.ceil((res.data.total || 0) / 15) || 1);
     } catch (err) {
       console.error('Erro ao buscar dizimistas', err);
       if (err.response?.status !== 401) {
          showMensagem('erro', 'Não foi possível carregar a lista do servidor.');
          setDizimistas([]);
+         setTotalPaginas(1);
       }
     } finally {
       setLoading(false);
@@ -68,20 +80,8 @@ const Dizimistas = () => {
 
   const handleBusca = async (e) => {
     e.preventDefault();
-    if (!busca) {
-      buscarDizimistas();
-      return;
-    }
-
-    try {
-      setLoading(true);
-      const res = await api.get(`/dizimistas/buscar?q=${busca}&${getStatusQuery()}`);
-      setDizimistas(res.data || []);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    setPaginaAtual(1);
+    buscarDizimistas(1);
   };
 
   // --- CRUD DIZIMISTAS ---
@@ -176,15 +176,17 @@ const Dizimistas = () => {
 
   const abrirModalHistorico = async (diz) => {
     setDizimistaSelecionado(diz);
+    setPaginaAtualHistorico(1);
     setModalHistoricoAberto(true);
-    await carregarHistorico(diz.id);
+    await carregarHistorico(diz.id, 1);
   };
 
-  const carregarHistorico = async (dizId) => {
+  const carregarHistorico = async (dizId, page = paginaAtualHistorico) => {
     try {
       setLoadingHistorico(true);
-      const res = await api.get(`/dizimistas/${dizId}/doacoes`);
-      setHistoricoDoacoes(res.data || []);
+      const res = await api.get(`/dizimistas/${dizId}/doacoes?page=${page}`);
+      setHistoricoDoacoes(res.data.data || []);
+      setTotalPaginasHistorico(Math.ceil((res.data.total || 0) / 15) || 1);
     } catch (err) {
       showMensagem('erro', 'Erro ao carregar histórico.');
     } finally {
@@ -198,6 +200,7 @@ const Dizimistas = () => {
   };
 
   const abrirModalEditarDoacao = (doacao) => {
+    setModalHistoricoAberto(false);
     setDoacaoSelecionada(doacao);
     
     // Preparar dt formatada para datetime-local
@@ -247,10 +250,20 @@ const Dizimistas = () => {
     try {
       await api.delete(`/doacoes/deletar/${id}`);
       showMensagem('sucesso', 'Doação deletada com sucesso!');
-      carregarHistorico(dizimistaSelecionado.id);
+      carregarHistorico(dizimistaSelecionado.id, paginaAtualHistorico);
     } catch (err) {
       showMensagem('erro', 'Erro ao deletar doação.');
     }
+  };
+
+  const handlePageChange = (novaPag) => {
+    setPaginaAtual(novaPag);
+    buscarDizimistas(novaPag);
+  };
+  
+  const handlePageChangeHistorico = (novaPag) => {
+    setPaginaAtualHistorico(novaPag);
+    carregarHistorico(dizimistaSelecionado.id, novaPag);
   };
 
   // --- RELATÓRIO ---
@@ -336,6 +349,7 @@ const Dizimistas = () => {
         ) : dizimistas.length === 0 ? (
           <div className="empty-state">{exibirDesativados ? 'Nenhum dizimista desativado encontrado.' : 'Nenhum dizimista encontrado.'}</div>
         ) : (
+          <>
           <table className="data-table">
             <thead>
               <tr>
@@ -375,6 +389,14 @@ const Dizimistas = () => {
               ))}
             </tbody>
           </table>
+          {totalPaginas > 1 && (
+            <div className="pagination-controls" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', borderTop: '1px solid var(--color-border)' }}>
+              <Button variant="secondary" onClick={() => handlePageChange(paginaAtual - 1)} disabled={paginaAtual === 1}>Anterior</Button>
+              <span style={{ margin: '0 1rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>Página {paginaAtual} de {totalPaginas}</span>
+              <Button variant="secondary" onClick={() => handlePageChange(paginaAtual + 1)} disabled={paginaAtual === totalPaginas}>Próxima</Button>
+            </div>
+          )}
+          </>
         )}
       </div>
 
@@ -535,6 +557,14 @@ const Dizimistas = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            )}
+            
+            {totalPaginasHistorico > 1 && !loadingHistorico && historicoDoacoes.length > 0 && (
+              <div className="pagination-controls" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '1rem' }}>
+                <Button variant="secondary" style={{padding: '0.5rem 1rem'}} onClick={() => handlePageChangeHistorico(paginaAtualHistorico - 1)} disabled={paginaAtualHistorico === 1}>Anterior</Button>
+                <span style={{ margin: '0 1rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Página {paginaAtualHistorico} de {totalPaginasHistorico}</span>
+                <Button variant="secondary" style={{padding: '0.5rem 1rem'}} onClick={() => handlePageChangeHistorico(paginaAtualHistorico + 1)} disabled={paginaAtualHistorico === totalPaginasHistorico}>Próxima</Button>
               </div>
             )}
 

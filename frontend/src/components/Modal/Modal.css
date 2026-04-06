@@ -72,3 +72,25 @@
   padding: 1.5rem;
   overflow-y: auto;
 }
+
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -0.5rem;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+}
