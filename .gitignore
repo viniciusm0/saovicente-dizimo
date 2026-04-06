@@ -5,6 +5,7 @@ backend/.env
 # Python
 backend/venv/
 backend/__pycache__/
+backend/tests/
 *.pyc
 *.pyo
 

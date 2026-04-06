@@ -12,7 +12,6 @@ function App() {
   return (
     <GoogleReCaptchaProvider 
       reCaptchaKey={recaptchaKey}
-      useEnterprise={true}
     >
       <BrowserRouter>
         <AuthProvider>

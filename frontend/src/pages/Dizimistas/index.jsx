@@ -40,13 +40,13 @@ const Dizimistas = () => {
   const buscarDizimistas = async () => {
     try {
       setLoading(true);
-      const res = await api.get('/dizimistas');
-      setDizimistas(res.data.dizimistas || []);
+      const res = await api.get('/dizimistas/buscar');
+      setDizimistas(res.data || []);
     } catch (err) {
       console.error('Erro ao buscar dizimistas', err);
-      // Fallback para dev visual se a rota falhar
       if (err.response?.status !== 401) {
-         setDizimistas([{ id: 1, numero_carteira: 101, nome: 'João da Silva', status: 'Ativo' }]);
+         showMensagem('erro', 'Não foi possível carregar a lista do servidor.');
+         setDizimistas([]);
       }
     } finally {
       setLoading(false);
@@ -63,7 +63,7 @@ const Dizimistas = () => {
     try {
       setLoading(true);
       const res = await api.get(`/dizimistas/buscar?q=${busca}`);
-      setDizimistas(res.data.resultados || []);
+      setDizimistas(res.data || []);
     } catch (err) {
       console.error(err);
     } finally {
@@ -106,7 +106,7 @@ const Dizimistas = () => {
       setLoadingForm(true);
       const valorNumerico = parseFloat(formDoacao.valor.replace(',', '.'));
       await api.post('/doacoes/adicionar', {
-        id_dizimista: dizimistaSelecionado.id,
+        dizimista_id: dizimistaSelecionado.id,
         valor: valorNumerico,
         data_hora: new Date().toISOString()
       });
