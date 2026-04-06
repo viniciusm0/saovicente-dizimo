@@ -10,3 +10,4 @@ requests
 urllib3
 reportlab
 gunicorn
+pydantic[email]
