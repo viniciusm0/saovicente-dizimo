@@ -13,7 +13,9 @@ def create_app():
     # Configurar CORS com Origin específica
     frontend_url = os.getenv("FRONTEND_URL")
     if not frontend_url:
-        raise ValueError("ERRO DE ARQUITETURA: FRONTEND_URL ausente. Defina a URL do seu frontend no .env (ex: http://localhost:5173 para teste ou a URL da Vercel)")
+        raise ValueError(
+            "ERRO DE ARQUITETURA: FRONTEND_URL ausente. Defina a URL do seu frontend no .env (ex: http://localhost:5173 para teste ou a URL da Vercel)"
+        )
     CORS(app, resources={r"/api/*": {"origins": frontend_url.split(",")}})
 
     # Configurações do App (Proteção contra token default)
