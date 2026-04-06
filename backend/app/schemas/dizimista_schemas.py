@@ -18,3 +18,17 @@ class AdicionarDoacaoSchema(BaseModel):
         # O Pydantic já lida com parses de ISO 8601 nativamente, 
         # mas estamos convertendo string vazia para None.
         return value
+
+class EditarDizimistaSchema(BaseModel):
+    numero_carteira: Optional[int] = Field(None, gt=0, description="Número da carteira do dizimista")
+    nome: Optional[str] = Field(None, min_length=3, max_length=150, description="Nome completo do dizimista")
+
+class EditarDoacaoSchema(BaseModel):
+    valor: Optional[float] = Field(None, gt=0, description="Valor do dízimo atualizado")
+    data_hora: Optional[datetime] = Field(None, description="Data e hora da doação atualizada")
+    
+    @field_validator('data_hora', mode='before')
+    def parse_datetime(cls, value):
+        if not value:
+            return None
+        return value
