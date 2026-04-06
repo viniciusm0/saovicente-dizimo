@@ -11,17 +11,21 @@ def create_app():
     app = Flask(__name__)
 
     # Configurar CORS com Origin específica
-    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+    frontend_url = os.getenv("FRONTEND_URL")
+    if not frontend_url:
+        raise ValueError("ERRO DE ARQUITETURA: FRONTEND_URL ausente. Defina a URL do seu frontend no .env (ex: http://localhost:5173 para teste ou a URL da Vercel)")
     CORS(app, resources={r"/api/*": {"origins": frontend_url.split(",")}})
 
     # Configurações do App (Proteção contra token default)
     jwt_secret = os.getenv("JWT_SECRET")
     env_mode = os.getenv("FLASK_ENV", "development")
-    
-    if not jwt_secret and env_mode != "development":
-        raise ValueError("ERRO CRÍTICO DE SEGURANÇA: JWT_SECRET não configurado no ambiente de produção!")
 
-    app.config["JWT_SECRET_KEY"] = jwt_secret or "super-secret-key-mudar-depois"
+    if not jwt_secret and env_mode != "development":
+        raise ValueError(
+            "ERRO CRÍTICO DE SEGURANÇA: JWT_SECRET não configurado no ambiente de produção!"
+        )
+
+    app.config["JWT_SECRET_KEY"] = jwt_secret
 
     # Inicializar extensões
     from flask_jwt_extended import JWTManager
