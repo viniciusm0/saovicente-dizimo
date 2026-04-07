@@ -16,7 +16,8 @@ def create_app():
         raise ValueError(
             "ERRO DE ARQUITETURA: FRONTEND_URL ausente. Defina a URL do seu frontend no .env (ex: http://localhost:5173 para teste ou a URL da Vercel)"
         )
-    CORS(app, resources={r"/api/*": {"origins": frontend_url.split(",")}})
+    print(frontend_url)
+    CORS(app, resources={r"/api/*": {"origins": frontend_url}})
 
     # Configurações do App (Proteção contra token default)
     jwt_secret = os.getenv("JWT_SECRET")
